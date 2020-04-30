@@ -1,0 +1,24 @@
+.chatBox{
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    border-radius: 15px !important;
+}
+
+.header{
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    padding-left: 10px !important;
+    margin-bottom: 10px;
+}
+.sent{
+    display: flex;
+    justify-content: flex-end;
+}
+.received{
+    display: flex;
+    justify-content: flex-start;
+}
+.message{
+    width: 40%;
+}

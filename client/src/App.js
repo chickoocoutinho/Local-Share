@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import { BrowserRouter as Router,Route} from 'react-router-dom';
+import {ReactComponent as TitleLogo} from './images/Local Share.svg';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {Chat , DeviceList} from './components';
+import styles from './app.module.css';
+
+import { Container } from '@material-ui/core';
+
+class App extends Component {
+  state = {  }
+  render() {
+    return (
+      <Router >
+        <Container maxWidth="sm">
+          <TitleLogo />
+          <Route path='/' exact component={DeviceList} />
+          <Route path='/room/:id' component={Chat} />
+        </Container>
+      </Router>
+    );
+  }
 }
 
 export default App;

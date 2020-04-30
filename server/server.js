@@ -2,7 +2,10 @@ const express = require('express');
 const formidable = require('formidable'); 
 const app = express();
 const path= require('path');
+const cors= require('cors');
 
+
+app.use(cors);
 
   app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
