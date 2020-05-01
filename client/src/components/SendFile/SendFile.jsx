@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {DropzoneDialog} from 'material-ui-dropzone';
-import {Button} from '@material-ui/core';
+import {IconButton} from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import axios from 'axios';
 
@@ -24,12 +24,17 @@ class SendFile extends Component {
             file: files,
             open:false
         });
-        axios.post('http://localhost:5000/upload',this.state);
+        /*const Form = new FormData();
+        Form.append("file",files[0]);
+        axios.post('http://localhost:5000/upload', Form)
+        .then(res=>console.log(res)); */
     };
     render() {
         return (
             <div>
-                <Button startIcon={ <CloudUploadIcon />} onClick={this.openDropZone} />
+                <IconButton onClick={this.openDropZone}>
+                    <CloudUploadIcon fontSize="medium" /> 
+                </IconButton>
                 <DropzoneDialog 
                 showPreviews={true} 
                 open={this.state.open}

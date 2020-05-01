@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    padding: 10px;
+    border-radius: 15px;
+    bottom: 0;
+}
+.marginLeft{
+    margin-left: 10px;
+}
+.input{
+    width: 70%;
+}

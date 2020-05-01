@@ -1,6 +1,7 @@
 .container{
     display: flex;
-    background-color: black;
-    height: 400px;
+    background-color: 	#dfe3ee;
+    height: 396.354px;
+    overflow-y: auto;
     width: 100%;
 }
