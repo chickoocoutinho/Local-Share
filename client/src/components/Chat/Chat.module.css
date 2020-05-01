@@ -11,6 +11,9 @@
     padding-left: 10px !important;
     margin-bottom: 10px;
 }
+.input{
+    align-items: flex-end;
+}
 .sent{
     display: flex;
     justify-content: flex-end;

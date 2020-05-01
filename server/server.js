@@ -5,10 +5,11 @@ const path= require('path');
 const cors= require('cors');
 
 
-app.use(cors);
+//app.use(cors);
 
-  app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+app.get('/', function(req, res) {
+    res.send('<p>some html</p>')
+    //res.sendFile(path.join(__dirname + '/index.html'));
   });
   
   app.post('/upload', (req, res, next) => {
