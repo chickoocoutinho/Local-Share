@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {ExpansionPanel, ExpansionPanelSummary, FormHelperText, ExpansionPanelDetails, Link, ExpansionPanelActions, Typography, TextField, StylesProvider } from '@material-ui/core';
+import {ExpansionPanel, ExpansionPanelSummary, FormHelperText, ExpansionPanelDetails , ExpansionPanelActions, Typography, TextField, StylesProvider } from '@material-ui/core';
 
 import styles from './DeviceList.module.css';
 
@@ -36,10 +37,12 @@ const DeviceList = ({room1, room2 }) => {
                 <TextField id="username" label="Username" error={error[key]} className={styles.input}
                                 placeholder="Enter Username to Join a Room" onChange={(e)=>{setUsername(e.target.value)}} /> 
                     {error[key]?(<FormHelperText error className={styles.error}>Enter Different Username</FormHelperText>):null}
-                    <Link href={{
+                    <Link to={{
                         pathname:`/${key+1}`,
                         state:{ username }
-                        }} className={styles.join}>Join</Link>
+                        }} className={styles.join}>
+                        Join
+                        </Link>
                 </ExpansionPanelActions>
                 </ExpansionPanel>)
             })}
