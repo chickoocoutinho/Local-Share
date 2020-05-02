@@ -21,7 +21,7 @@ class Displaybar extends Component {
         return (        
             <AppBar position='relative' className={styles.header} elevation={0}>
                     <ChatIcon />
-                    <Typography variant="h6" className={styles.heading} >Device Name</Typography>
+                    <Typography variant="h6" className={styles.heading} >{this.props.roomName}</Typography>
                     <IconButton color="inherit" onClick={this.handleRedirect}>
                         <CancelIcon />
                     </IconButton>

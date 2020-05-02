@@ -1,40 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {ExpansionPanel, ExpansionPanelSummary, ExpansionPanelDetails, Link, Typography } from '@material-ui/core';
+import {ExpansionPanel, ExpansionPanelSummary, FormHelperText, ExpansionPanelDetails, Link, ExpansionPanelActions, Typography, TextField, StylesProvider } from '@material-ui/core';
 
-const DeviceList = () => {
+import styles from './DeviceList.module.css';
+
+const DeviceList = ({room1, room2 }) => {
+    const [username, setUsername] = useState('');
+    const [error, setError] = useState([true, true, true]);
+
+    const innerText= [{ name:"Room 1", users:room1},
+            {name:"Room 2", users:room2}, 
+            { name:"Server", users:["Send Files to the Laptop"]}];
+
+    const closePanel = (expanded)=>{
+        return (expanded? null: setUsername(''));
+    }
+
+    //Error Handling
+
     return (
         <div>
-            <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography varient='h6'>Room 1</Typography>
+            {innerText.map((element, key)=>{
+                return (<ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} 
+                        onChange={({expanded})=> closePanel(expanded)}>
+                    <Typography varient='h6'>{element.name}</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
-                    <Typography varient='h6'>Room 1<br/></Typography>
-                    <Link href='/room/1'>Join</Link>
+                    <Typography varient='body-2'>
+                       {element.users.length? element.users.map(name=> ` ${name} `):"Empty"}
+                    </Typography>
                 </ExpansionPanelDetails>
-            </ExpansionPanel>
-
-            <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography varient='h6'>Room 2</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography varient='h6'>Room 2</Typography><br />
-                    <Link href='/room/1'>Join</Link>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
-
-            <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography varient='h6'>Server</Typography>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                    <Typography varient='h6'>Server</Typography><br />
-                    <Link href='/room/1'>Join</Link>
-                </ExpansionPanelDetails>
-            </ExpansionPanel>
+                <ExpansionPanelActions className={styles.grid}>
+                <TextField id="username" label="Username" error={error[key]} className={styles.input}
+                                placeholder="Enter Username to Join a Room" onChange={(e)=>{setUsername(e.target.value)}} /> 
+                    {error[key]?(<FormHelperText error className={styles.error}>Enter Different Username</FormHelperText>):null}
+                    <Link href={{
+                        pathname:`/${key+1}`,
+                        state:{ username }
+                        }} className={styles.join}>Join</Link>
+                </ExpansionPanelActions>
+                </ExpansionPanel>)
+            })}
         </div>
     );
 }
