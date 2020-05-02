@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Chat.module.css';
-import Messages from '../Messages/Messages';
+import Messages from '../MessagesBox/Messages';
 import InputField from '../InputField/InputField';
 import Displaybar from '../DisplayBar/Displaybar';
 

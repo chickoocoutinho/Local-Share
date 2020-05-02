@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {DropzoneDialog} from 'material-ui-dropzone';
 import {IconButton} from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import axios from 'axios';
+//import axios from 'axios';
 
 class SendFile extends Component {
     state = {

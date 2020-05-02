@@ -1,0 +1,24 @@
+.container{
+    /*display: grid;
+    grid-template-columns: 48% 4% 48%;
+    grid-template-rows: 40px ;*/
+    display: flex;
+    flex-direction: column;
+    background-color: 	#dfe3ee;
+    height: 396.354px;
+    overflow-y: auto;
+    width: 100%;
+}
+.sent {
+    display: flex;
+    justify-content: flex-end;
+}
+.received {
+    display: flex;
+    justify-content: flex-start;
+}
+.chip{
+    width: 48%;
+    margin: 5px 0;
+}
+ 
