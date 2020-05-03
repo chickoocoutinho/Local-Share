@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import {ExpansionPanel, ExpansionPanelSummary, FormHelperText, ExpansionPanelDetails , ExpansionPanelActions, Typography, TextField, StylesProvider } from '@material-ui/core';
+import {ExpansionPanel, ExpansionPanelSummary, FormHelperText, ExpansionPanelDetails , ExpansionPanelActions, Typography, TextField } from '@material-ui/core';
 
 import styles from './DeviceList.module.css';
 
@@ -14,9 +14,6 @@ const DeviceList = ({room1, room2 }) => {
             {name:"Room 2", users:room2}, 
             { name:"Server", users:["Send Files to the Laptop"]}];
 
-    const closePanel = (expanded)=>{
-        return (expanded? null: setUsername(''));
-    }
 
     //Error Handling
 
@@ -24,8 +21,7 @@ const DeviceList = ({room1, room2 }) => {
         <div>
             {innerText.map((element, key)=>{
                 return (<ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} 
-                        onChange={({expanded})=> closePanel(expanded)}>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} >
                     <Typography varient='h6'>{element.name}</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
@@ -34,7 +30,7 @@ const DeviceList = ({room1, room2 }) => {
                     </Typography>
                 </ExpansionPanelDetails>
                 <ExpansionPanelActions className={styles.grid}>
-                <TextField id="username" label="Username" error={error[key]} className={styles.input}
+                <TextField id="username" label="Username" error={error[key]} className={styles.input} value={username}
                                 placeholder="Enter Username to Join a Room" onChange={(e)=>{setUsername(e.target.value)}} /> 
                     {error[key]?(<FormHelperText error className={styles.error}>Enter Different Username</FormHelperText>):null}
                     <Link to={{
