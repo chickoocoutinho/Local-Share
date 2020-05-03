@@ -17,9 +17,9 @@ class App extends Component {
     return (
       <Router >
         <Container maxWidth="sm">
-          <Link to='/'>
+          <a href='/'>
             <TitleLogo />
-          </Link>
+          </a>
           <Route path='/' exact render={()=>
                     <DeviceList room1={room1} room2={room2}/>} />
           <Route path='/1' render={()=> <Chat room={room1} id="Room 1" /> } />

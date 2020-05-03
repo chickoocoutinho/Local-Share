@@ -35,7 +35,7 @@ const DeviceList = ({room1, room2 }) => {
                     {error[key]?(<FormHelperText error className={styles.error}>Enter Different Username</FormHelperText>):null}
                     <Link to={{
                         pathname:`/${key+1}`,
-                        state:{ username }
+                        state:{ username: `${username}` }
                         }} className={styles.join}>
                         Join
                         </Link>

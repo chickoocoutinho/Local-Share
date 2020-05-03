@@ -1,23 +1,17 @@
 import React, {Component} from 'react';
 import styles from './DisplayBar.module.css';
-import {Redirect} from 'react-router-dom';
 
 import {AppBar, Typography, IconButton} from '@material-ui/core';
 import ChatIcon from '@material-ui/icons/Chat';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 class Displaybar extends Component {
-    state = { 
-        redirect: false
-    };
-    handleRedirect = ()=>{
-        this.setState({ redirect: true });
-    };
-    render() {
-        if(this.state.redirect){
-           return <Redirect to='/' />
-        }
 
+    handleRedirect = ()=>{
+        window.location='/';
+    }
+
+    render() {
         return (        
             <AppBar position='relative' className={styles.header} elevation={0}>
                     <ChatIcon />
