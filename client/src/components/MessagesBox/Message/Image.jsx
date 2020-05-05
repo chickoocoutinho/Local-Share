@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState , useEffect} from 'react';
 import styles from '../Messages.module.css';
 
-const Image = ({path}) => {
+const Image = ({ path }) => {
+    
     return (
         <img src={require(`${path}`)} className={styles.chip} />
     );

@@ -4,7 +4,7 @@ import { Input, Fab } from '@material-ui/core';
 import SendFile from '../SendFile/SendFile';
 import SendIcon from '@material-ui/icons/Send';
 
-const InputField = ({handleMessageChange, handleSendMessage, message}) => {
+const InputField = ({handleMessageChange, handleSendMessage, message, socket, setPath }) => {
     //handle send file
     const sendMessage= (event)=>{
         handleSendMessage(event);
@@ -16,7 +16,7 @@ const InputField = ({handleMessageChange, handleSendMessage, message}) => {
             <Input placeholder="Type a Message..." className={styles.input}
                         value={message} 
                         onChange={(e)=>handleMessageChange(e.target.value)}/>
-            <SendFile className={styles.File}/>
+            <SendFile className={styles.File} setPath={setPath}/>
             <Fab    
                 onClick={(event)=>{sendMessage(event)}}
                 onKeyPress={ event => event.key==='Enter'? sendMessage(event):null}

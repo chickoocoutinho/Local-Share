@@ -18,7 +18,9 @@ const Chat = ({id, room}) => {
 
     const [message, setMessage]= useState('');
     const [messages, setMessages]= useState([]);
-    const ENDPOINT= "localhost:5000";
+    const [path, setPath] = useState('');
+    const [paths, setPaths] = useState([]);
+    const ENDPOINT= "http://192.168.1.9:5000";
 
     useEffect(()=>{
         if (username){ //triggered only when username is not blank
@@ -37,18 +39,31 @@ const Chat = ({id, room}) => {
     
     //handling messages receiving
     useEffect(()=>{
-        if(socket){
+        if(socket){ //handle no socket error
             socket.on('message', (message)=>{
                 setMessages([...messages, message]);
-            })
+            });
+
+          /*  socket.on('files', (file) =>{
+                setMessages([...messages, message]);
+            }); */
+            
         }        
     },[messages,socket,username]);
 
 
     useEffect(()=>{
+        if(!state){
+            console.log("error");
+            //redirect to error 
+        }
         //handling passing username from link
         setUsername(state.username);
     },[state]); 
+
+    useEffect(()=>{
+        setPaths([...paths,path])
+    },[path]); 
 
     const sendMessage = (event)=>{
         if(message){
@@ -61,11 +76,13 @@ const Chat = ({id, room}) => {
 
     //handle send file to input
     return (
-        <Paper elevation={3} className={styles.chatBox}>
+        socket?
+        (<Paper elevation={3} className={styles.chatBox}>
         <Displaybar roomName={id} />
-        <Messages room={room} messages={messages} name={username} />
-        <InputField handleMessageChange={setMessage} handleSendMessage={sendMessage} message={message}/>
-        </Paper>
+        <Messages room={room} messages={messages} name={username} socket={socket} path={path} />
+        <InputField handleMessageChange={setMessage} socket={socket} 
+                    handleSendMessage={sendMessage} message={message} setPath={setPath} />
+        </Paper>):null
     );
 }
 
