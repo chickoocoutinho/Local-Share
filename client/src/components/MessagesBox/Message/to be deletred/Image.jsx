@@ -4,7 +4,7 @@ import styles from '../Messages.module.css';
 const Image = ({ path }) => {
     
     return (
-        <img src={require(`${path}`)} className={styles.chip} />
+        <img src={require(`${path}`)} className={styles.schip} />
     );
 }
 

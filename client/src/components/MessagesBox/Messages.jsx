@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import styles from './Messages.module.css';
 import Message from './Message/Message';
 
-const Messages = ({messages , name, socket, path}) => {
+const Messages = ({messages , name}) => {
 
     return (
         <div className={styles.container}>
-            {messages.map((message, i)=> <div key={i}> <Message message={message} path={path}
-                                        name={name} socket={socket}/> </div>)}
+            {messages.map((message, i)=> <div key={i}> <Message message={message} 
+                                        name={name} /> </div>)}
         </div>
     );
 }

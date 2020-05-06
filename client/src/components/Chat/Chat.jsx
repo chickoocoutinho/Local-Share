@@ -18,8 +18,7 @@ const Chat = ({id, room}) => {
 
     const [message, setMessage]= useState('');
     const [messages, setMessages]= useState([]);
-    const [path, setPath] = useState('');
-    const [paths, setPaths] = useState([]);
+    const [path, setPath] = useState({});
     const ENDPOINT= "http://192.168.1.9:5000";
 
     useEffect(()=>{
@@ -62,7 +61,7 @@ const Chat = ({id, room}) => {
     },[state]); 
 
     useEffect(()=>{
-        setPaths([...paths,path])
+        setMessages([...messages, path]);
     },[path]); 
 
     const sendMessage = (event)=>{
@@ -79,8 +78,8 @@ const Chat = ({id, room}) => {
         socket?
         (<Paper elevation={3} className={styles.chatBox}>
         <Displaybar roomName={id} />
-        <Messages room={room} messages={messages} name={username} socket={socket} path={path} />
-        <InputField handleMessageChange={setMessage} socket={socket} 
+        <Messages  messages={messages} name={username} />
+        <InputField handleMessageChange={setMessage} name={username}
                     handleSendMessage={sendMessage} message={message} setPath={setPath} />
         </Paper>):null
     );

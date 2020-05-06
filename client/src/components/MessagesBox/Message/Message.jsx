@@ -2,17 +2,8 @@ import React from 'react';
 import SentMessages from './SentMessages';
 import ReceivedMessages from './ReceivedMessages';
 
-const Message = ({message:{user , text, type} , name, socket, path}) => {
+const Message = ({message:{user , text, path, type} , name }) => {
     
-    /*const [filePath, setFilePath]= useState([]);
-    useEffect(()=>{
-        
-    },[socket]);
-
-    useEffect(()=>{
-        
-    },[]);  */
-
     let isSentByCurrentUser = false;
     const trimmedName= name.trim().toLowerCase();
 
@@ -20,15 +11,12 @@ const Message = ({message:{user , text, type} , name, socket, path}) => {
         isSentByCurrentUser=true
     }
 
-    const file = (file)=>{
-        let fileStream = file.stream();
-    }
-
+    //put messages in card
     return (
             isSentByCurrentUser?(
-                <SentMessages text={text} user={user} type={type} socket={socket} path={path}/>
+                <SentMessages text={text} user={user} type={type} path={path} />
             ):(
-                <ReceivedMessages text={text} user={user}/>
+                <ReceivedMessages text={text} user={user} type={type} path={path}/>
             )
     );
 }

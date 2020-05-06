@@ -6,7 +6,7 @@ import axios from 'axios';
 import Dropzone from 'react-dropzone';
 
 
-const SendFile = ({setPath}) => {
+const SendFile = ({setPath, name}) => {
 
     
     //const [path, setPath] = useState('');
@@ -18,8 +18,8 @@ const SendFile = ({setPath}) => {
             header: { 'content-type': 'multipart/form-data' }
         }
         formData.append("file", files[0])
-        let path= files[0].name;
-        setPath(path);
+        let {path , type}= files[0];
+        setPath({user: name , text:null, path , type});
         axios.post('http://localhost:5000/upload', formData, config)
             .then(response => {
                 //handle response

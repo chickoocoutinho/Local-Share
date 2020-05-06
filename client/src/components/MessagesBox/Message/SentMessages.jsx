@@ -1,26 +1,36 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styles from '../Messages.module.css';
+import {Link} from 'react-router-dom';
+
+import FileViewer from 'react-file-viewer';
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 
 
 import { Chip,Typography } from '@material-ui/core';
 
-const SentMessages = ({text, user, type, socket}) => {
+const SentMessages = ({text, user, type, path}) => {
     
-    /*useEffect(()=>{
-        let reader = new FileReader();
-        reader.readAsDataURL(file)
-
-        fs.writeFile("out.png", base64Data, 'base64', function(err) {
-            console.log(err);
-        });
-    },[]);*/
 
     return (
         <div className={styles.sent}>
+            {path === null ?(
             <Chip color="primary"
                 label={text}
                 className={styles.schip}
-                size="medium" />
+                size="medium" />)
+            :(
+                <div className={styles.schip}>
+                    <FileViewer
+                    fileType={type.split("/")[1]}
+                    filePath={`http://localhost:5000/uploads/${path}`}                
+                    />
+                    <Link to={`http://localhost:5000/uploads/${path}`} target="__blank" 
+                                    download={`${path}`}>
+                    <CloudDownloadIcon />
+                    </Link>
+               </div>
+            )
+            }
             <Typography variant="caption" className={styles.suser}>
                 -{user}
             </Typography>
