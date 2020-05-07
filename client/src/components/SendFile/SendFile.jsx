@@ -17,10 +17,11 @@ const SendFile = ({setPath, name}) => {
         const config = {
             header: { 'content-type': 'multipart/form-data' }
         }
-        formData.append("file", files[0])
-        let {path , type}= files[0];
-        setPath({user: name , text:null, path , type});
-        axios.post('http://localhost:5000/upload', formData, config)
+            formData.append("file", files[0])
+            let {path , type}= files[0];
+            setPath({user: name , text:null, path , type});    
+        
+        axios.post('http://192.168.1.9:5000/upload', formData, config)
             .then(response => {
                 //handle response
             })            
@@ -28,7 +29,7 @@ const SendFile = ({setPath, name}) => {
 
         return (
             <div>
-                    <Dropzone onDrop={onDrop}>
+                    <Dropzone onDrop={onDrop} multiple={false}>
                     {({ getRootProps, getInputProps }) => (
                         <section>
                             <div {...getRootProps()}>

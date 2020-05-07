@@ -10,30 +10,3 @@
     width: 100%;
 }
 
-.sent{
-    display: grid;
-    grid-template-columns: 52% 48%;
-}
-.schip{
-    grid-column: 2;
-    margin-top: 5px;
-}
-.suser{
-    grid-row: 2;
-    grid-column: 2;
-}
-
-.received{
-    display: grid;
-    grid-template-columns: 48% 52%;
-}
-.rchip{
-    grid-column: 1;
-    margin-top: 5px;
-}
-.ruser{
-    grid-row: 2;
-    grid-column: 1;
-}
- 
- 

@@ -1,6 +1,6 @@
 import React from 'react';
-import SentMessages from './SentMessages';
-import ReceivedMessages from './ReceivedMessages';
+import SentMessages from './SentMessages/SentMessages';
+import ReceivedMessages from './ReceivedMessages/ReceivedMessages';
 
 const Message = ({message:{user , text, path, type} , name }) => {
     

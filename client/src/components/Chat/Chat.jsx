@@ -43,10 +43,10 @@ const Chat = ({id, room}) => {
                 setMessages([...messages, message]);
             });
 
-          /*  socket.on('files', (file) =>{
-                setMessages([...messages, message]);
-            }); */
-            
+            //handling recieve file
+            socket.on('file', (path) =>{
+                setMessages([...messages, path]);
+            });             
         }        
     },[messages,socket,username]);
 
@@ -61,7 +61,9 @@ const Chat = ({id, room}) => {
     },[state]); 
 
     useEffect(()=>{
-        setMessages([...messages, path]);
+        if(socket){
+        socket.emit('sendFile',path,()=>console.log(1));        
+        }
     },[path]); 
 
     const sendMessage = (event)=>{

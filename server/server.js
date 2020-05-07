@@ -31,7 +31,7 @@ let progress= 0;
     socket.on('join',({name , room}, callback)=>{
         const {error, user} = addUser({id:socket.id, name, room});
 
-        if (error){
+        if (error){ 
           return callback(error);
         }
 
@@ -45,17 +45,20 @@ let progress= 0;
 
     socket.on('sendMessage', (message, callback)=>{
       const user = getUser(socket.id);      
-      console.log(user);
-      io.to(user.room).emit('message', {user: user.name, text:message ,type:"text",type:"message", path: null});
+      io.to(user.room).emit('message', {user: user.name, text:message,type:"message", path: null});
 
       callback();
     });
 
-
+    //HANDLING RECIEVING AND SENDING FILE
+    socket.on('sendFile', (path, callback)=>{
+      const user = getUser(socket.id);      
+      io.to(user.room).emit('file', path);
+      callback();
+    });
 
     socket.on('disconnect', () => { 
       const user = removeUser(socket.id);
-      console.log(user);
       io.to(user.room).emit('message', {user: 'admin', text:`${user.name} has left the Room`,type:"message", path: null});
     });
   });
