@@ -9,7 +9,7 @@ const addUser = ({ id, name, room})=>{
         user.name===name && user.room===room
     });
     if(existingUser){
-        return {error: "Username is taken"};
+        name += "_"
     }
     const user = { id, name, room};
     users.push(user);

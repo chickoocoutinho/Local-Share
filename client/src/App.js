@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router,Route, Link} from 'react-router-dom';
+import { BrowserRouter as Router,Route } from 'react-router-dom';
 import {ReactComponent as TitleLogo} from './images/Local Share.svg';
+import axios from 'axios';
+
 
 import {Chat , DeviceList} from './components';
-//import styles from './app.module.css';
 
 import { Container } from '@material-ui/core';
 
@@ -12,6 +13,17 @@ class App extends Component {
     room1: [],
     room2: [],
    }
+  componentDidMount() {
+    axios.get("http://192.168.1.9:5000/data/room1")
+    .then(response =>{
+      this.setState({room1:response.users})
+    });
+
+    axios.get("http://192.168.1.9:5000/data/room2")
+    .then(response =>{
+      this.setState({room2:response.users})
+    });
+  }
   render() {
     const {room1, room2, server} = this.state;
     return (

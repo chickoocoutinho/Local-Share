@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {IconButton} from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import axios from 'axios';
@@ -8,9 +8,6 @@ import Dropzone from 'react-dropzone';
 
 const SendFile = ({setPath, name}) => {
 
-    
-    //const [path, setPath] = useState('');
-    
 
     const onDrop = (files) => {
         let formData = new FormData();

@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "backend": "nodemon server/server.js",
+    "backend": "node server/server.js",
     "frontend": "npm run start --prefix client",
     "dev": "npm run backend & npm run start --prefix client"
   },

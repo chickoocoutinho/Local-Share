@@ -27,7 +27,7 @@ const ReceivedMessages = ({text, user, type, path}) => {
 
     const message = ()=>{
         return (<div className={styles.container}>
-                {   (type =="message") ?(
+                {   (type ==="message") ?(
                         <Chip color="secondary"
                             label={text}
                             className={styles.chip}

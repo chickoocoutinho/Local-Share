@@ -8,7 +8,6 @@ import styles from './DeviceList.module.css';
 
 const DeviceList = ({room1, room2 }) => {
     const [username, setUsername] = useState('');
-    const [error, setError] = useState([true, true, true]);
 
     const innerText= [{ name:"Room 1", users:room1},
             {name:"Room 2", users:room2}, 
@@ -20,19 +19,19 @@ const DeviceList = ({room1, room2 }) => {
     return (
         <div>
             {innerText.map((element, key)=>{
-                return (<ExpansionPanel>
+                return (<ExpansionPanel id={key}>
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} >
                     <Typography varient='h6'>{element.name}</Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                     <Typography varient='body-2'>
-                       {element.users.length? element.users.map(name=> ` ${name} `):"Empty"}
+                       {element.users? element.users.map(name=> ` ${name} `):"Empty"}
                     </Typography>
                 </ExpansionPanelDetails>
                 <ExpansionPanelActions className={styles.grid}>
-                <TextField id="username" label="Username" error={error[key]} className={styles.input} value={username}
-                                placeholder="Enter Username to Join a Room" onChange={(e)=>{setUsername(e.target.value)}} /> 
-                    {error[key]?(<FormHelperText error className={styles.error}>Enter Different Username</FormHelperText>):null}
+                <TextField id={`username${key}`} label="Username" className={styles.input} value={username}
+                                placeholder="Join a Room" onChange={(e)=>{setUsername(e.target.value)}} /> 
+                     <FormHelperText className={styles.helperText}>Enter Username</FormHelperText>
                     <Link to={{
                         pathname:`/${key+1}`,
                         state:{ username: `${username}` }

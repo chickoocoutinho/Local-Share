@@ -24,8 +24,10 @@ const port= process.env.PORT || 5000;
 const upload = require('./upload');
 app.use('/upload',upload);
 
-let uploaded= false;
-let progress= 0;
+  app.get('/data/:room',(req,res)=>{
+    users= getUsersInRoom(req.params.name);
+    res.send({users});
+  });
 
   io.on('connection', (socket) => {
     socket.on('join',({name , room}, callback)=>{

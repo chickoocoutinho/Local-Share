@@ -12,7 +12,8 @@ const FileType = ({type, path}) => {
         switch(type.split('/')[0]){
             case 'image':
                 return (
-                    <img src={`http://localhost:5000/uploads/${path}`} className={styles.media} />
+                    <img src={`http://localhost:5000/uploads/${path}`} alt={path}
+                                className={styles.media} />
                 );
                 break;
             case 'video':

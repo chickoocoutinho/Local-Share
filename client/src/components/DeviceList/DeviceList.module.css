@@ -7,7 +7,7 @@
     grid-column: 1;
 }
 
-.error{
+.helperText{
     grid-column: 1;
     grid-row: 2;
 }

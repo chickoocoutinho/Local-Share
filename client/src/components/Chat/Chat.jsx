@@ -53,8 +53,7 @@ const Chat = ({id, room}) => {
 
     useEffect(()=>{
         if(!state){
-            console.log("error");
-            //redirect to error 
+            window.location='/';
         }
         //handling passing username from link
         setUsername(state.username);
