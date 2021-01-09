@@ -3,7 +3,7 @@ import styles from './Chat.module.css';
 import Messages from '../MessagesBox/Messages';
 import InputField from '../InputField/InputField';
 import Displaybar from '../DisplayBar/Displaybar';
-
+import BACKEND_URL from '../../../backendIP.js';
 
 import { Paper } from '@material-ui/core';
 import { useLocation } from 'react-router-dom';
@@ -19,7 +19,7 @@ const Chat = ({id, room}) => {
     const [message, setMessage]= useState('');
     const [messages, setMessages]= useState([]);
     const [path, setPath] = useState({});
-    const ENDPOINT= "http://192.168.1.9:5000";
+    const ENDPOINT= BACKEND_URL;
 
     useEffect(()=>{
         if (username){ //triggered only when username is not blank

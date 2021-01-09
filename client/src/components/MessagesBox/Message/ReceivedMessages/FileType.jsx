@@ -4,6 +4,8 @@ import styles from './ReceivedMessages.module.css';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import { Chip } from '@material-ui/core';
 
+import BACKEND_URL from '../../../../../backendIP.js';
+
 
 const FileType = ({type, path}) => {
 
@@ -11,13 +13,13 @@ const FileType = ({type, path}) => {
         switch(type.split('/')[0]){
             case 'image':
                 return (
-                    <img src={`http://192.168.1.9:5000/uploads/${path}`} alt={path}
+                    <img src={`http://${BACKEND_URL}/uploads/${path}`} alt={path}
                                 className={styles.media} />
                 );
                 break;
             case 'video':
                 return (
-                    <video src={`http://192.168.1.9:5000/uploads/${path}`} className={styles.media} controls>
+                    <video src={`http://${BACKEND_URL}/uploads/${path}`} className={styles.media} controls>
                             Your browser does not support Video Tag
                     </video>
                 );

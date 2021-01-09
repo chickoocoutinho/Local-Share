@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import Dropzone from 'react-dropzone';
 
+import BACKEND_URL from '../../../backendIP.js'
+
 
 const SendFile = ({setPath, name}) => {
 
@@ -18,7 +20,7 @@ const SendFile = ({setPath, name}) => {
             let {path , type}= files[0];
             setPath({user: name , text:null, path , type});    
         
-        axios.post('http://192.168.1.9:5000/upload', formData, config)
+        axios.post(`http://${BACKEND_URL}/upload`, formData, config)
             .then(response => {
                 //handle response
             })            

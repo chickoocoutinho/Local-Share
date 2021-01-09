@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 import {ReactComponent as TitleLogo} from './images/Local Share.svg';
 import axios from 'axios';
+import BACKEND_URL from '../backendIP.js';
 
 
 import {Chat , DeviceList} from './components';
@@ -14,12 +15,12 @@ class App extends Component {
     room2: [],
    }
   componentDidMount() {
-    axios.get("http://192.168.1.9:5000/data/room1")
+    axios.get(`http://${BACKEND_URL}/data/room1`)
     .then(response =>{
       this.setState({room1:response.users})
     });
 
-    axios.get("http://192.168.1.9:5000/data/room2")
+    axios.get(`http://${BACKEND_URL}/data/room2`)
     .then(response =>{
       this.setState({room2:response.users})
     });
