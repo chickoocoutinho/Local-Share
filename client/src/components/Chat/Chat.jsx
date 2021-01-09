@@ -3,7 +3,7 @@ import styles from './Chat.module.css';
 import Messages from '../MessagesBox/Messages';
 import InputField from '../InputField/InputField';
 import Displaybar from '../DisplayBar/Displaybar';
-import BACKEND_URL from '../../../backendIP.js';
+import BACKEND_URL from '../../backendIP.js';
 
 import { Paper } from '@material-ui/core';
 import { useLocation } from 'react-router-dom';

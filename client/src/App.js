@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 import {ReactComponent as TitleLogo} from './images/Local Share.svg';
 import axios from 'axios';
-import BACKEND_URL from '../backendIP.js';
+import BACKEND_URL from './backendIP.js';
 
 
 import {Chat , DeviceList} from './components';
@@ -29,7 +29,7 @@ class App extends Component {
     const {room1, room2, server} = this.state;
     return (
       <Router >
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" style={{marginBottom: '20px'}}>
           <a href='/'>
             <TitleLogo />
           </a>

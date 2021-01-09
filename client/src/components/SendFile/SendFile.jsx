@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import Dropzone from 'react-dropzone';
 
-import BACKEND_URL from '../../../backendIP.js'
+import BACKEND_URL from '../../backendIP.js'
 
 
 const SendFile = ({setPath, name}) => {

@@ -4,7 +4,7 @@ import styles from './ReceivedMessages.module.css';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import { Chip } from '@material-ui/core';
 
-import BACKEND_URL from '../../../../../backendIP.js';
+import BACKEND_URL from '../../../../backendIP.js';
 
 
 const FileType = ({type, path}) => {
