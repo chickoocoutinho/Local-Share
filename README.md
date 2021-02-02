@@ -14,6 +14,8 @@ Share files between devices connected to your local network, convert your laptop
 
 * [React](https://reactjs.org/)
 * [Material-UI](https://material-ui.com/)
+* [Express](https://expressjs.com/)
+* [Socket-IO](https://socket.io/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
