@@ -38,10 +38,6 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-3. Run Development Server
-   ```sh
-   npm start
-   ```
 ### Config
 To run on local machine change the backed url in `/client/src/backendip.js`
 ```javascript
